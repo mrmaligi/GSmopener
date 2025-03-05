@@ -80,23 +80,6 @@ export default function Step4Page() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Relay Control Settings</Text>
 
-          <View style={styles.commandBox}>
-            <Text style={styles.commandBoxTitle}>4.1: Allow all numbers to call-in</Text>
-            <Text style={styles.commandSyntax}>pwdALL#</Text>
-            <Text style={styles.commandExample}>Example: 1234ALL#</Text>
-
-            <Text style={[styles.commandBoxTitle, styles.marginTop]}>4.2: Allow only authorized numbers (default)</Text>
-            <Text style={styles.commandSyntax}>pwdAUT#</Text>
-            <Text style={styles.commandExample}>Example: 1234AUT#</Text>
-
-            <Text style={[styles.commandBoxTitle, styles.marginTop]}>4.3: Set relay latch time</Text>
-            <Text style={styles.commandSyntax}>pwdGOTclose time#</Text>
-            <Text style={styles.commandExample}>close time=000~999 seconds</Text>
-            <Text style={styles.commandExample}>000: momentary (0.5s) - USE THIS FOR AUTOMATIC GATES</Text>
-            <Text style={styles.commandExample}>999: always ON until next call</Text>
-            <Text style={styles.commandExample}>Example: 1234GOT030# to set relay close for 30 seconds</Text>
-          </View>
-
           <Text style={styles.sectionTitle}>Access Control</Text>
           <View style={styles.optionsGrid}>
             <TouchableOpacity 
@@ -180,28 +163,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     marginBottom: 16,
-  },
-  commandBox: {
-    backgroundColor: '#f5f5f5',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  commandBoxTitle: {
-    fontWeight: '600',
-    marginBottom: 4,
-  },
-  commandSyntax: {
-    fontFamily: 'monospace',
-    marginBottom: 4,
-  },
-  commandExample: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 4,
-  },
-  marginTop: {
-    marginTop: 12,
   },
   sectionTitle: {
     fontSize: 18,

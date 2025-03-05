@@ -94,22 +94,12 @@ export default function Step2Page() {
             maxLength={4}
           />
 
-          <View style={styles.commandBox}>
-            <Text style={styles.commandBoxTitle}>Command Format:</Text>
-            <Text style={styles.commandSyntax}>pwdPnewpwd</Text>
-            <Text style={styles.commandExample}>Example: 1234P6666</Text>
-            <Text style={styles.commandExample}>This changes the password to 6666</Text>
-          </View>
-
           <TouchableOpacity 
             style={styles.primaryButton}
             onPress={changePassword}
           >
             <Text style={styles.primaryButtonText}>Change Password</Text>
           </TouchableOpacity>
-          <Text style={styles.commandPreview}>
-            Will send: {password}P{newPassword || "xxxx"}
-          </Text>
         </View>
       </ScrollView>
     </View>
@@ -157,25 +147,6 @@ const styles = StyleSheet.create({
   disabledInput: {
     backgroundColor: '#f5f5f5',
   },
-  commandBox: {
-    backgroundColor: '#f5f5f5',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  commandBoxTitle: {
-    fontWeight: '600',
-    marginBottom: 4,
-  },
-  commandSyntax: {
-    fontFamily: 'monospace',
-    marginBottom: 4,
-  },
-  commandExample: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 4,
-  },
   primaryButton: {
     backgroundColor: '#00bfff',
     borderRadius: 8,
@@ -186,10 +157,5 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: '500',
-  },
-  commandPreview: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 8,
   },
 });
