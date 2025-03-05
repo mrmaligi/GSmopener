@@ -64,9 +64,6 @@ export default function HomePage() {
       
       <View style={styles.content}>
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Step 5: Control the relay ON / OFF</Text>
-          <Text style={styles.cardSubtitle}>Control the gate by sending SMS commands</Text>
-
           <TouchableOpacity style={styles.button} onPress={turnRelayOn}>
             <View style={styles.buttonContent}>
               <Gate size={48} color="#00bfff" />
@@ -74,7 +71,6 @@ export default function HomePage() {
             </View>
             <MessageSquare size={24} color="#00bfff" />
           </TouchableOpacity>
-          <Text style={styles.commandText}>Sends: "{password}CC" - Return SMS: Relay ON</Text>
 
           <TouchableOpacity style={styles.button} onPress={turnRelayOff}>
             <View style={styles.buttonContent}>
@@ -83,7 +79,6 @@ export default function HomePage() {
             </View>
             <MessageSquare size={24} color="#00bfff" />
           </TouchableOpacity>
-          <Text style={styles.commandText}>Sends: "{password}DD" - Return SMS: Relay OFF</Text>
         </View>
 
         <View style={styles.card}>

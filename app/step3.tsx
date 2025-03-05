@@ -20,22 +20,12 @@ export default function Step3Page() {
           </Text>
 
           <View style={styles.commandBox}>
-            <Text style={styles.commandBoxTitle}>3.1: Add authorized user</Text>
-            <Text style={styles.commandSyntax}>pwdA001#04xxxxxxxxx#</Text>
             <Text style={styles.commandExample}>
               "A" command code for adding users followed by their serial number.
             </Text>
-
-            <Text style={[styles.commandBoxTitle, styles.marginTop]}>3.2: Add user with time restrictions</Text>
-            <Text style={styles.commandSyntax}>pwdA001#04xxxxxxxxx#2408050800#2409051000#</Text>
-            <Text style={styles.commandExample}>Example: 1234A016#123456#2408050800#2409051000#</Text>
             <Text style={styles.commandExample}>
               This sets phone number 123456 at position 16, with access from Aug 5th 8:00AM till Sep 5th 10:00AM.
             </Text>
-
-            <Text style={[styles.commandBoxTitle, styles.marginTop]}>3.3: Delete authorized user</Text>
-            <Text style={styles.commandSyntax}>pwdAserial number##</Text>
-            <Text style={styles.commandExample}>Example: 1234A002## to delete the 2nd authorized number.</Text>
           </View>
 
           <TouchableOpacity 

@@ -46,7 +46,6 @@ export default function SettingsPage() {
       <Header title="Settings" />
       <ScrollView style={styles.content}>
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>SMS Command Reference</Text>
           <View style={styles.commandList}>
             <Text style={styles.commandItem}>
               <Text style={styles.commandLabel}>Step 1:</Text> {password}TEL00xxxxxxxxxx#
