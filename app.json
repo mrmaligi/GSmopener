@@ -19,6 +19,9 @@
     "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true
+    },
+    "android": {
+      "permissions": ["SEND_SMS", "READ_SMS"]
     }
   }
 }

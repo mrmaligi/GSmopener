@@ -23,10 +23,12 @@ export default function HomePage() {
   const loadData = async () => {
     try {
       const savedUnitNumber = await AsyncStorage.getItem('unitNumber');
+      console.log('Loaded unitNumber:', savedUnitNumber); // Add this line
+      if (savedUnitNumber) setUnitNumber(savedUnitNumber);
+      else console.warn('No unitNumber found in AsyncStorage');
       const savedPassword = await AsyncStorage.getItem('password');
       const savedRelaySettings = await AsyncStorage.getItem('relaySettings');
 
-      if (savedUnitNumber) setUnitNumber(savedUnitNumber);
       if (savedPassword) setPassword(savedPassword);
       if (savedRelaySettings) setRelaySettings(JSON.parse(savedRelaySettings));
     } catch (error) {
@@ -36,21 +38,31 @@ export default function HomePage() {
 
   // SMS Commands
   const sendSMS = (command) => {
+    if (!unitNumber) {
+      alert('Please set a valid unit number in Settings.');
+      return;
+    }
+
     const smsUrl = Platform.select({
-      ios: `sms:${unitNumber}&body=${encodeURIComponent(command)}`,
+      ios: `sms:${unitNumber.replace('+', '')}&body=${encodeURIComponent(command)}`,
       android: `sms:${unitNumber}?body=${encodeURIComponent(command)}`,
       default: `sms:${unitNumber}?body=${encodeURIComponent(command)}`,
     });
-    
+
+    console.log('SMS URL:', smsUrl);
+
     Linking.canOpenURL(smsUrl)
-      .then(supported => {
+      .then((supported) => {
         if (!supported) {
-          alert('SMS is not available on this device');
+          alert('SMS is not available on this device. Please ensure an SMS app is installed.');
           return;
         }
         return Linking.openURL(smsUrl);
       })
-      .catch(err => console.error('An error occurred', err));
+      .catch((err) => {
+        console.error('An error occurred while opening SMS:', err);
+        alert('Failed to open SMS. Check the console for details.');
+      });
   };
 
   // Control Relay

@@ -13,6 +13,10 @@ export default function SettingsPage() {
 
   useEffect(() => {
     loadData();
+    if (!unitNumber) {
+      setUnitNumber('+1234567890'); // Temporary test number
+      AsyncStorage.setItem('unitNumber', '+1234567890');
+    }
   }, []);
 
   const loadData = async () => {
