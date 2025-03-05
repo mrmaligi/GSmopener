@@ -64,7 +64,7 @@ export default function HomePage() {
       
       <View style={styles.content}>
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Step 5: Control the relay ON / OFF</Text>
+          <Text style={styles.cardTitle}>Control the relay ON / OFF</Text>
           <Text style={styles.cardSubtitle}>Control the gate by sending SMS commands</Text>
 
           <TouchableOpacity style={styles.button} onPress={turnRelayOn}>
