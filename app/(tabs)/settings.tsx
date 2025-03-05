@@ -46,42 +46,6 @@ export default function SettingsPage() {
       <Header title="Settings" />
       <ScrollView style={styles.content}>
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>SMS Command Reference</Text>
-          <View style={styles.commandList}>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 1:</Text> {password}TEL00xxxxxxxxxx#
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 2:</Text> {password}P[new 4-digit password]
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 3.1:</Text> {password}A[serial]#[phone]#
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 3.2:</Text> {password}A[serial]#[phone]#[start]#[end]#
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 3.3:</Text> {password}A[serial]##
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 4.1:</Text> {password}ALL#
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 4.2:</Text> {password}AUT#
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 4.3:</Text> {password}GOT[time]#
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 5 ON:</Text> {password}CC
-            </Text>
-            <Text style={styles.commandItem}>
-              <Text style={styles.commandLabel}>Step 5 OFF:</Text> {password}DD
-            </Text>
-          </View>
-        </View>
-
-        <View style={styles.card}>
           <Text style={styles.cardTitle}>Device Settings</Text>
           
           <Text style={styles.inputLabel}>Unit Telephone Number</Text>
@@ -139,16 +103,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     marginBottom: 16,
-  },
-  commandList: {
-    marginBottom: 8,
-  },
-  commandItem: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  commandLabel: {
-    fontWeight: '600',
   },
   inputLabel: {
     fontSize: 18,

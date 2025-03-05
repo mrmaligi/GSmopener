@@ -85,12 +85,6 @@ export default function Step1Page() {
           />
           <Text style={styles.inputHint}>Format: Your country code + phone number</Text>
 
-          <View style={styles.commandBox}>
-            <Text style={styles.commandBoxTitle}>Command Format:</Text>
-            <Text style={styles.commandSyntax}>PwdTEL00614xxxxxxxx#</Text>
-            <Text style={styles.commandExample}>Example: 1234TEL0061469843459#</Text>
-          </View>
-
           <TouchableOpacity 
             style={styles.primaryButton}
             onPress={registerAdmin}
@@ -149,25 +143,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
     marginBottom: 16,
-  },
-  commandBox: {
-    backgroundColor: '#f5f5f5',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  commandBoxTitle: {
-    fontWeight: '600',
-    marginBottom: 4,
-  },
-  commandSyntax: {
-    fontFamily: 'monospace',
-    marginBottom: 4,
-  },
-  commandExample: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 4,
   },
   primaryButton: {
     backgroundColor: '#00bfff',
