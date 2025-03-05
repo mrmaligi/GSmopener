@@ -32,7 +32,8 @@
       }
     },
     "android": {
-      "package": "com.manikaran2007.boltexponativewind"
+      "package": "com.manikaran2007.boltexponativewind",
+      "permissions": ["SEND_SMS", "READ_SMS"]
     }
   }
 }
