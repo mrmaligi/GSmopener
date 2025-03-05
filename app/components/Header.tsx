@@ -10,7 +10,7 @@ interface HeaderProps {
   color?: string;
 }
 
-export default function Header({ title, showBack = false, backTo = '/setup', color = '#00bfff' }: HeaderProps) {
+export default function Header({ title, showBack = false, backTo = '/setup', color = '#FFCC00' }: HeaderProps) {
   const router = useRouter();
   
   return (
