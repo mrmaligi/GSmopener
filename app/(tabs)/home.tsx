@@ -69,19 +69,19 @@ export default function HomePage() {
 
           <TouchableOpacity style={styles.button} onPress={turnRelayOn}>
             <View style={styles.buttonContent}>
-              <Gate size={48} color="#00bfff" />
+              <Gate size={48} color="#FFCC00" />
               <Text style={styles.buttonText}>Open Gate (ON)</Text>
             </View>
-            <MessageSquare size={24} color="#00bfff" />
+            <MessageSquare size={24} color="#FFCC00" />
           </TouchableOpacity>
           <Text style={styles.commandText}>Sends: "{password}CC" - Return SMS: Relay ON</Text>
 
           <TouchableOpacity style={styles.button} onPress={turnRelayOff}>
             <View style={styles.buttonContent}>
-              <Gate size={48} color="#00bfff" />
+              <Gate size={48} color="#FFCC00" />
               <Text style={styles.buttonText}>Close Gate (OFF)</Text>
             </View>
-            <MessageSquare size={24} color="#00bfff" />
+            <MessageSquare size={24} color="#FFCC00" />
           </TouchableOpacity>
           <Text style={styles.commandText}>Sends: "{password}DD" - Return SMS: Relay OFF</Text>
         </View>
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   primaryButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#FFCC00',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
