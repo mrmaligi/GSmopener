@@ -65,9 +65,38 @@ export default function HomePage() {
       });
   };
 
+  // Call Device
+  const callDevice = () => {
+    if (!unitNumber) {
+      alert('Please set a valid unit number in Settings.');
+      return;
+    }
+
+    const phoneUrl = `tel:${unitNumber}`;
+
+    Linking.canOpenURL(phoneUrl)
+      .then((supported) => {
+        if (!supported) {
+          alert('Phone call is not available on this device.');
+          return;
+        }
+        return Linking.openURL(phoneUrl);
+      })
+      .catch((err) => {
+        console.error('An error occurred while making a phone call:', err);
+        alert('Failed to make a phone call. Check the console for details.');
+      });
+  };
+
   // Control Relay
-  const turnRelayOn = () => sendSMS(`${password}CC`);
-  const turnRelayOff = () => sendSMS(`${password}DD`);
+  const turnRelayOn = () => {
+    sendSMS(`${password}CC`);
+    callDevice();
+  };
+  const turnRelayOff = () => {
+    sendSMS(`${password}DD`);
+    callDevice();
+  };
 
   return (
     <View style={styles.container}>
@@ -96,6 +125,15 @@ export default function HomePage() {
             <MessageSquare size={24} color="#00bfff" />
           </TouchableOpacity>
           <Text style={styles.commandText}>Sends: "{password}DD" - Return SMS: Relay OFF</Text>
+
+          <TouchableOpacity style={styles.button} onPress={callDevice}>
+            <View style={styles.buttonContent}>
+              <Gate size={48} color="#00bfff" />
+              <Text style={styles.buttonText}>Call Device</Text>
+            </View>
+            <MessageSquare size={24} color="#00bfff" />
+          </TouchableOpacity>
+          <Text style={styles.commandText}>Calls: "{unitNumber}"</Text>
         </View>
 
         <View style={styles.card}>
