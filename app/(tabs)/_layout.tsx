@@ -15,6 +15,10 @@ export default function TabLayout() {
           height: 60,
           paddingBottom: 5,
         },
+        tabBarLabelStyle: {
+          color: 'white',
+        },
+        tabBarLabelPosition: 'below-icon',
         headerShown: false,
       }}
     >
