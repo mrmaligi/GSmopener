@@ -10,11 +10,11 @@ interface HeaderProps {
   color?: string;
 }
 
-export default function Header({ title, showBack = false, backTo = '/setup', color = '#00bfff' }: HeaderProps) {
+export default function Header({ title, showBack = false, backTo = '/setup', color = '#003399' }: HeaderProps) {
   const router = useRouter();
   
   return (
-    <View style={[styles.header, { backgroundColor: color }]}>
+    <View style={[styles.header, { backgroundColor: '#003399' }]}>
       {showBack && (
         <TouchableOpacity 
           style={styles.backButton}
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 16,
     paddingTop: 50, // Extra padding for status bar
+    backgroundColor: '#FFCC00', // P3e38
   },
   backButton: {
     marginRight: 16,
