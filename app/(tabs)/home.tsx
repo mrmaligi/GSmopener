@@ -71,25 +71,25 @@ export default function HomePage() {
 
   return (
     <View style={styles.container}>
-      <Header title="GSM Relay Control" />
+      <Header title="connect4v" />
       <DeviceInfo unitNumber={unitNumber} />
       
       <View style={styles.content}>
         <View style={styles.card}>
           <TouchableOpacity style={styles.button} onPress={turnRelayOn}>
             <View style={styles.buttonContent}>
-              <Gate size={48} color="#00bfff" />
+              <Gate size={48} color="#FFCC00" />
               <Text style={styles.buttonText}>Open Gate (ON)</Text>
             </View>
-            <MessageSquare size={24} color="#00bfff" />
+            <MessageSquare size={24} color="#FFCC00" />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button} onPress={turnRelayOff}>
             <View style={styles.buttonContent}>
-              <Gate size={48} color="#00bfff" />
+              <Gate size={48} color="#FFCC00" />
               <Text style={styles.buttonText}>Close Gate (OFF)</Text>
             </View>
-            <MessageSquare size={24} color="#00bfff" />
+            <MessageSquare size={24} color="#FFCC00" />
           </TouchableOpacity>
         </View>
 
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   primaryButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#FFCC00',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',

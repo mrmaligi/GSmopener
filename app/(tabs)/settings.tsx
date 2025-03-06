@@ -112,7 +112,7 @@ export default function SettingsPage() {
         </View>
 
         <TouchableOpacity 
-          style={styles.saveButton}
+          style={[styles.saveButton, { backgroundColor: '#FFCC00' }]} // P7b64
           onPress={saveToLocalStorage}
         >
           <Text style={styles.saveButtonText}>Save Settings</Text>
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   saveButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#003399',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',

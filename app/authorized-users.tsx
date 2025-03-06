@@ -164,7 +164,7 @@ export default function AuthorizedUsersPage() {
             
             <View style={styles.buttonRow}>
               <TouchableOpacity 
-                style={styles.addButton}
+                style={[styles.addButton, { backgroundColor: '#FFCC00' }]} // Pb011
                 onPress={() => addAuthorizedUser(index)}
               >
                 <Text style={styles.buttonText}>Add User</Text>
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
   },
   userTitle: {
     fontSize: 20,
-    color: '#00bfff',
+    color: '#FFCC00', // P7bc2
     marginBottom: 16,
   },
   inputLabel: {
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   addButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#FFCC00', // Pb011
     borderRadius: 8,
     padding: 12,
     flex: 1,
