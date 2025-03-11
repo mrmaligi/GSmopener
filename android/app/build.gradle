@@ -173,7 +173,4 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-
-    implementation files('gradle/wrapper/gradle-wrapper.jar')
-    implementation files('gradle/wrapper/gradle-wrapper.properties')
 }
