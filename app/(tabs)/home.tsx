@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Platform, PermissionsAndroid } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MessageSquare } from 'lucide-react-native';
@@ -17,8 +17,28 @@ export default function HomePage() {
   });
 
   useEffect(() => {
+    if (Platform.OS === 'android') {
+      requestAndroidPermissions();
+    }
     loadData();
   }, []);
+
+  const requestAndroidPermissions = async () => {
+    try {
+      const permissions = [
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        PermissionsAndroid.PERMISSIONS.READ_SMS,
+        PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
+        PermissionsAndroid.PERMISSIONS.SEND_SMS,
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+      ];
+      const result = await PermissionsAndroid.requestMultiple(permissions);
+      console.log('Permission results:', result);
+      // Optionally, you could check if any permission is denied and handle accordingly.
+    } catch (err) {
+      console.warn('Permission request error:', err);
+    }
+  };
 
   const loadData = async () => {
     try {
@@ -43,12 +63,14 @@ export default function HomePage() {
       return;
     }
 
-    const smsUrl = Platform.select({
-      ios: `sms:${unitNumber.replace('+', '')}&body=${encodeURIComponent(command)}`,
-      android: `sms:${unitNumber}?body=${encodeURIComponent(command)}`,
-      default: `sms:${unitNumber}?body=${encodeURIComponent(command)}`,
-    });
+    // For iOS, remove '+' if present.
+    const formattedUnitNumber = Platform.OS === 'ios' ? unitNumber.replace('+', '') : unitNumber;
 
+    const smsUrl = Platform.select({
+      ios: `sms:${formattedUnitNumber}&body=${encodeURIComponent(command)}`,
+      android: `sms:${formattedUnitNumber}?body=${encodeURIComponent(command)}`,
+      default: `sms:${formattedUnitNumber}?body=${encodeURIComponent(command)}`,
+    });
     console.log('SMS URL:', smsUrl);
 
     Linking.canOpenURL(smsUrl)
@@ -149,7 +171,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderWidth: 1,
-    borderColor: '#e0e0e0',
+    borderColor: '#FFCC00',
     borderRadius: 8,
     padding: 16,
     marginBottom: 12,
