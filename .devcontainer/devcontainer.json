@@ -1,7 +1,5 @@
 {
   "tasks": {
-    "build": "npm install && npm run build:web",
-    "test": "echo \"No test scripts found in package.json\"",
-    "launch": "npm run dev"
+    "build": "npm install && npm run build:web"
   }
 }

@@ -91,10 +91,6 @@ export default function Step1Page() {
           >
             <Text style={styles.primaryButtonText}>Send Registration SMS</Text>
           </TouchableOpacity>
-          <Text style={styles.commandPreview}>
-            Will send: {password}TEL00{adminNumber || "xxxxxxxxxx"}#
-          </Text>
-          <Text style={styles.commandResponse}>Return SMS from Relay: Set Success!</Text>
         </View>
       </ScrollView>
     </View>
@@ -145,7 +141,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   primaryButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#FFCC00',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
@@ -154,15 +150,5 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: '500',
-  },
-  commandPreview: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 8,
-  },
-  commandResponse: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 4,
   },
 });

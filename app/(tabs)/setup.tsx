@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#00bfff',
+    backgroundColor: '#FFCC00',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '180deg' }],
   },
   saveButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#FFCC00',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',

@@ -13,6 +13,10 @@ export default function SettingsPage() {
 
   useEffect(() => {
     loadData();
+    if (!unitNumber) {
+      setUnitNumber('+1234567890'); // Temporary test number
+      AsyncStorage.setItem('unitNumber', '+1234567890');
+    }
   }, []);
 
   const loadData = async () => {
@@ -46,6 +50,41 @@ export default function SettingsPage() {
       <Header title="Settings" />
       <ScrollView style={styles.content}>
         <View style={styles.card}>
+          <View style={styles.commandList}>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 1:</Text> {password}TEL00xxxxxxxxxx#
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 2:</Text> {password}P[new 4-digit password]
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 3.1:</Text> {password}A[serial]#[phone]#
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 3.2:</Text> {password}A[serial]#[phone]#[start]#[end]#
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 3.3:</Text> {password}A[serial]##
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 4.1:</Text> {password}ALL#
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 4.2:</Text> {password}AUT#
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 4.3:</Text> {password}GOT[time]#
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 5 ON:</Text> {password}CC
+            </Text>
+            <Text style={styles.commandItem}>
+              <Text style={styles.commandLabel}>Step 5 OFF:</Text> {password}DD
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.card}>
           <Text style={styles.cardTitle}>Device Settings</Text>
           
           <Text style={styles.inputLabel}>Unit Telephone Number</Text>
@@ -73,7 +112,7 @@ export default function SettingsPage() {
         </View>
 
         <TouchableOpacity 
-          style={styles.saveButton}
+          style={[styles.saveButton, { backgroundColor: '#FFCC00' }]} // P7b64
           onPress={saveToLocalStorage}
         >
           <Text style={styles.saveButtonText}>Save Settings</Text>
@@ -104,6 +143,16 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 16,
   },
+  commandList: {
+    marginBottom: 8,
+  },
+  commandItem: {
+    fontSize: 16,
+    marginBottom: 8,
+  },
+  commandLabel: {
+    fontWeight: '600',
+  },
   inputLabel: {
     fontSize: 18,
     marginBottom: 8,
@@ -117,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   saveButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#003399',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',

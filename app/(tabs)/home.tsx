@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Platform, PermissionsAndroid } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MessageSquare } from 'lucide-react-native';
@@ -17,16 +17,38 @@ export default function HomePage() {
   });
 
   useEffect(() => {
+    if (Platform.OS === 'android') {
+      requestAndroidPermissions();
+    }
     loadData();
   }, []);
+
+  const requestAndroidPermissions = async () => {
+    try {
+      const permissions = [
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        PermissionsAndroid.PERMISSIONS.READ_SMS,
+        PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
+        PermissionsAndroid.PERMISSIONS.SEND_SMS,
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+      ];
+      const result = await PermissionsAndroid.requestMultiple(permissions);
+      console.log('Permission results:', result);
+      // Optionally, you could check if any permission is denied and handle accordingly.
+    } catch (err) {
+      console.warn('Permission request error:', err);
+    }
+  };
 
   const loadData = async () => {
     try {
       const savedUnitNumber = await AsyncStorage.getItem('unitNumber');
+      console.log('Loaded unitNumber:', savedUnitNumber); // Add this line
+      if (savedUnitNumber) setUnitNumber(savedUnitNumber);
+      else console.warn('No unitNumber found in AsyncStorage');
       const savedPassword = await AsyncStorage.getItem('password');
       const savedRelaySettings = await AsyncStorage.getItem('relaySettings');
 
-      if (savedUnitNumber) setUnitNumber(savedUnitNumber);
       if (savedPassword) setPassword(savedPassword);
       if (savedRelaySettings) setRelaySettings(JSON.parse(savedRelaySettings));
     } catch (error) {
@@ -36,21 +58,33 @@ export default function HomePage() {
 
   // SMS Commands
   const sendSMS = (command) => {
+    if (!unitNumber) {
+      alert('Please set a valid unit number in Settings.');
+      return;
+    }
+
+    // For iOS, remove '+' if present.
+    const formattedUnitNumber = Platform.OS === 'ios' ? unitNumber.replace('+', '') : unitNumber;
+
     const smsUrl = Platform.select({
-      ios: `sms:${unitNumber}&body=${encodeURIComponent(command)}`,
-      android: `sms:${unitNumber}?body=${encodeURIComponent(command)}`,
-      default: `sms:${unitNumber}?body=${encodeURIComponent(command)}`,
+      ios: `sms:${formattedUnitNumber}&body=${encodeURIComponent(command)}`,
+      android: `sms:${formattedUnitNumber}?body=${encodeURIComponent(command)}`,
+      default: `sms:${formattedUnitNumber}?body=${encodeURIComponent(command)}`,
     });
-    
+    console.log('SMS URL:', smsUrl);
+
     Linking.canOpenURL(smsUrl)
-      .then(supported => {
+      .then((supported) => {
         if (!supported) {
-          alert('SMS is not available on this device');
+          alert('SMS is not available on this device. Please ensure an SMS app is installed.');
           return;
         }
         return Linking.openURL(smsUrl);
       })
-      .catch(err => console.error('An error occurred', err));
+      .catch((err) => {
+        console.error('An error occurred while opening SMS:', err);
+        alert('Failed to open SMS. Check the console for details.');
+      });
   };
 
   // Control Relay
@@ -59,14 +93,11 @@ export default function HomePage() {
 
   return (
     <View style={styles.container}>
-      <Header title="GSM Relay Control" />
+      <Header title="connect4v" />
       <DeviceInfo unitNumber={unitNumber} />
       
       <View style={styles.content}>
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Control the relay ON / OFF</Text>
-          <Text style={styles.cardSubtitle}>Control the gate by sending SMS commands</Text>
-
           <TouchableOpacity style={styles.button} onPress={turnRelayOn}>
             <View style={styles.buttonContent}>
               <Gate size={48} color="#FFCC00" />
@@ -74,7 +105,6 @@ export default function HomePage() {
             </View>
             <MessageSquare size={24} color="#FFCC00" />
           </TouchableOpacity>
-          <Text style={styles.commandText}>Sends: "{password}CC" - Return SMS: Relay ON</Text>
 
           <TouchableOpacity style={styles.button} onPress={turnRelayOff}>
             <View style={styles.buttonContent}>
@@ -83,7 +113,6 @@ export default function HomePage() {
             </View>
             <MessageSquare size={24} color="#FFCC00" />
           </TouchableOpacity>
-          <Text style={styles.commandText}>Sends: "{password}DD" - Return SMS: Relay OFF</Text>
         </View>
 
         <View style={styles.card}>
@@ -142,7 +171,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderWidth: 1,
-    borderColor: '#e0e0e0',
+    borderColor: '#FFCC00',
     borderRadius: 8,
     padding: 16,
     marginBottom: 12,

@@ -100,9 +100,6 @@ export default function Step2Page() {
           >
             <Text style={styles.primaryButtonText}>Change Password</Text>
           </TouchableOpacity>
-          <Text style={styles.commandPreview}>
-            Will send: {password}P{newPassword || "xxxx"}
-          </Text>
         </View>
       </ScrollView>
     </View>
@@ -151,7 +148,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   primaryButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#FFCC00',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
@@ -160,10 +157,5 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: '500',
-  },
-  commandPreview: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 8,
   },
 });
