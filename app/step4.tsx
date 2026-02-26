@@ -89,7 +89,7 @@ export default function Step4Page() {
               ]}
               onPress={() => setAccessControl('ALL')}
             >
-              <Users size={32} color="#00bfff" style={styles.optionIcon} />
+              <Users size={32} color="#FFCC00" style={styles.optionIcon} />
               <Text style={styles.optionText}>Allow All Numbers</Text>
             </TouchableOpacity>
             
@@ -100,7 +100,7 @@ export default function Step4Page() {
               ]}
               onPress={() => setAccessControl('AUT')}
             >
-              <Lock size={32} color="#00bfff" style={styles.optionIcon} />
+              <Lock size={32} color="#FFCC00" style={styles.optionIcon} />
               <Text style={styles.optionText}>Authorized Only</Text>
             </TouchableOpacity>
           </View>
@@ -183,8 +183,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   optionButtonSelected: {
-    borderColor: '#00bfff',
-    backgroundColor: '#e6f7ff',
+    borderColor: '#FFCC00',
+    backgroundColor: '#FFF8E1',
   },
   optionIcon: {
     marginBottom: 8,
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   primaryButton: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#FFCC00',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
